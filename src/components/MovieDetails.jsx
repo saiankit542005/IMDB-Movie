@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {useNavigate} from "react-router-dom";
 import {
   ArrowLeft,
   Star,
@@ -17,6 +18,7 @@ import {
 import { Link, useParams } from 'react-router-dom';
 
 function MovieDetails({ onBack }) {
+  const navigate = useNavigate();
   const [movie, setMovie] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
@@ -132,8 +134,8 @@ function MovieDetails({ onBack }) {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 py-8">
           <button
-            onClick={onBack}
-            className="flex items-center gap-2 mb-8 px-4 py-2 bg-black/50 hover:bg-black/70 rounded-lg transition-colors backdrop-blur-sm"
+            onClick={()=>navigate(-1)}
+            className="flex items-center gap-2 mb-8 px-4 py-2 bg-black/50 hover:bg-black/70 rounded-lg transition-colors backdrop-blur-sm cursor-pointer"
           >
             <ArrowLeft className="w-5 h-5" />
             Back to Search
